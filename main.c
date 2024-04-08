@@ -50,6 +50,16 @@ TokenLiteral * generate_number(FILE *file, char current) {
     return (token);
 }
 
+TokenKeyword * generate_keyword(FILE *file, char current) {
+    TokenKeyword * token = malloc(sizeof(TokenKeyword));
+    char * keyword = malloc(sizeof(char) * 8);
+    int keyword_index = 0;
+    while (isalpha(current) && current != EOF) {
+        keyword[keyword_index++] = current;
+    }
+    return (token);
+}
+
 void lexer(FILE *file) {
     char current = fgetc(file);
     while (current != EOF) {
